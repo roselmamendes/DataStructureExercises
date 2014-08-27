@@ -36,6 +36,9 @@ public class TrataIsbn {
 
         String verifiedDigit = isbn.substring(9,10);
 
+        if(verifiedDigit.matches("[0-9]"))
+            return TrataIsbn.
+
         return Integer.parseInt(verifiedDigit) == TrataIsbn.getCheckDigit(isbn.substring(0,9));
 
     }
