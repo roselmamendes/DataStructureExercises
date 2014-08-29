@@ -38,4 +38,24 @@ public class TrataIsbnTest {
 
     }
 
+    @Test
+    public void whenCheckDigitIsTenTest(){
+
+        String isbnInvalido =  "159972091X";
+
+        String isbn2 = "044018293X";
+        assertTrue(TrataIsbn.checkIsbn(isbn2));
+
+    }
+
+    @Test
+    public void whenCheckDigitIsXInvalidTest(){
+
+        String isbnInvalido =  "159972091X";
+
+        String isbn2 = "044018293X";
+        assertFalse(TrataIsbn.checkIsbn(isbnInvalido));
+
+    }
+
 }
