@@ -5,58 +5,48 @@ package twu.exercises;
  */
 public class TrataIsbn {
 
+    private static final int X = 10;
+    private static final int DIVISOR = 11;
 
-    public static int getCheckDigit(String primeirosNoveNumeros){
+
+    public static boolean getCheckDigit(String primeirosNoveNumeros,String verifiedDigit){
 
         int controlNumber = 0;
 
         char[] vetorStr = primeirosNoveNumeros.toCharArray();
-        char numeroDoVetorChar;
-        int numeroDoVetorInt;
         int tam = primeirosNoveNumeros.length();
         int soma = 0;
 
-        for(int i = 0; i < 9 && tam == 9 ; i++){
+        if(tam == 9) {
 
+            for (int i = 0; i < 9; i++) {
 
-            numeroDoVetorChar = vetorStr[i];
-            numeroDoVetorInt = Character.getNumericValue(numeroDoVetorChar);
+                soma += (Character.getNumericValue(vetorStr[i]) * (i + 1));
 
-            soma += (numeroDoVetorInt * (i+1));
+            }
 
         }
 
-        controlNumber = soma % 11;
+        controlNumber = soma % DIVISOR;
 
-        return controlNumber;
+        return verifiedDigit.matches("[0-9]")?
+                Integer.parseInt(verifiedDigit) == controlNumber:
+                checkAndTreatWhenVerifiedDigitIsX(verifiedDigit,controlNumber);
+
+    }
+
+    private static boolean checkAndTreatWhenVerifiedDigitIsX(String verifiedDigit,int controlNumber){
+
+            return verifiedDigit.toLowerCase().equals("x")?controlNumber == X:false;
 
     }
 
     public static boolean checkIsbn(String isbn){
 
         String verifiedDigit = isbn.substring(9,10);
+        String primeirosNoveDigitos = isbn.substring(0, 9);
 
-        try {
-
-            if (verifiedDigit.matches("[0-9]"))
-                return Integer.parseInt(verifiedDigit) == TrataIsbn.getCheckDigit(isbn.substring(0, 9));
-            else {
-
-                if (verifiedDigit.toLowerCase().equals("x")) {
-
-                    if (TrataIsbn.getCheckDigit(isbn.substring(0, 9)) == 10)
-                        return true;
-                    else
-                        return false;
-
-                }
-
-            }
-        }
-        catch(Exception e){
-            System.out.println(e.getMessage());
-        }
-        return false;
+       return getCheckDigit(primeirosNoveDigitos,verifiedDigit);
 
     }
 

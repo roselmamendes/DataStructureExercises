@@ -13,10 +13,7 @@ public class TrataIsbnTest {
 
         String isbn = "408873104";
 
-        int controlNumberEsperado = 2;
-        int controlNumberObtido = TrataIsbn.getCheckDigit(isbn);
-
-        assertEquals(controlNumberEsperado,controlNumberObtido);
+        assertTrue(TrataIsbn.getCheckDigit(isbn,"2"));
 
     }
 
