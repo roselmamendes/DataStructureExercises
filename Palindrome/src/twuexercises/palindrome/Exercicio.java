@@ -46,16 +46,9 @@ public class Exercicio {
 			
 			if(Palindrome.ehMultiploDe(i, ehMultiploDe)){
 				
-				String numeroStr = Integer.toString(i);
-				
-				if(Palindrome.ehPalindrome(numeroStr) == palindrome){
-					
-					if(!aSerExibido.isEmpty())
-						aSerExibido += ",";
-					
-					aSerExibido += i;
-					
-				}
+				aSerExibido = Palindrome.ehPalindrome(Integer.toString(i)) == palindrome && !aSerExibido.isEmpty()?
+						aSerExibido + "," + i:
+							"" + i;
 				
 			}
 			
