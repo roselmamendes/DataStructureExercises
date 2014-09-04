@@ -16,8 +16,14 @@ public class ListData {
 			head = node;
 		else{
 			
+			
+			
 		}
 		
+	}
+	
+	public Node findLastNode(){
+		return null;
 	}
 	
 	

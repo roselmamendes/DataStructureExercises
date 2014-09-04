@@ -7,7 +7,7 @@ public class Node {
 	
 	public Node(String conteudo){
 		
-		this.conteudo = conteudo;
+		this.conteudo = conteudo.toLowerCase();
 		this.proximo = null;
 		
 	}
